@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "385835941722",
+    "project_id": "firesense-7dcb6",
+    "storage_bucket": "firesense-7dcb6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385835941722:android:8ce447eb7f99bbf964bd63",
+        "android_client_info": {
+          "package_name": "com.example.firesense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCyShqsVXT8oPCoTdswXXdzHjOaE0yitY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
