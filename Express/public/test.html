@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fire Detection Viewer</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        padding: 20px;
+      }
+      img {
+        width: 80%;
+        border: 2px solid #333;
+      }
+      .stats {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔥 Fire & Smoke Detection - Live Stream</h1>
+    <img id="video" src="" alt="Waiting for frames..." />
+
+    <div class="stats">
+      <p id="fire">Fire Area: 0</p>
+      <p id="smoke">Smoke Area: 0</p>
+      <p id="alert">Alert: false</p>
+    </div>
+
+    <!-- Load Socket.IO script -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      // Connect to /app namespace
+      const socket = io("/app");
+
+      socket.on("connect", () => {
+        console.log("Connected to /app namespace");
+      });
+
+      socket.on("frame", (data) => {
+        // Update image
+        document.getElementById("video").src =
+          "data:image/jpeg;base64," + data.frame_b64;
+
+        // Update stats
+        document.getElementById("fire").innerText =
+          "Fire Area: " + data.fire_area;
+        document.getElementById("smoke").innerText =
+          "Smoke Area: " + data.smoke_area;
+        document.getElementById("alert").innerText = "Alert: " + data.any_alert;
+      });
+    </script>
+  </body>
+</html>
